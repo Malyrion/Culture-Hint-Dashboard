@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+      <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+      <script type="text/javascript" src="lib/jquery-2.0.3.js"></script>
+      <script type="text/javascript" src="lib/globalize.min.js"></script>
+      <script type="text/javascript" src="lib/dx.chartjs.js"></script>
+      <script type="text/javascript" src="main.js"></script>
+  <title>Culture Hints</title>
+</head>
+<body>
+    <section id="sideBar">
+      <nav>
+        <a href="#"  class="nav-list"><i class="fas fa-home"></i> Home</a>
+        <a href="#" class="nav-list"><i class="fas fa-chart-line"></i> Charts</a>
+        <a href="#" class="nav-list"><i class="fas fa-project-diagram"></i> Diagrams</a>
+        <a href="#" class="nav-list"><i class="fas fa-user"></i> Acount</a>
+        <a href="#" class="nav-list"><i class="fas fa-cog"></i> Settings</a>
+      </nav>
+      </section>
+    <header>
+      <div class="search">
+        <i class="fas fa-search"></i>
+        <input type="text" name="" value="">
+
+      <div class="user-f">
+        <a href="#" class="add">+ Add</a>
+        <a href="#" class="notification">
+
+          <i class="fas fa-bell"><span class="avatar">3</span></i></a>
+        <a href="#">
+        <!-- <div class="user-img"> -->
+            <img src="images/blank-profile.png" alt="">
+        <!-- </div> -->
+        <i class="fas fa-caret-down"></i>
+        </a>
+      </div>
+      </div>
+    </header>
+
+<section class="content">
+  <div class="heading">
+      <h1>Dashboard</h1>
+      <p>Welcome to MUS</p>
+  </div>
+  <div class="user-graph">
+    <div class="user">
+      <div class ="user-image">
+          <img src="images/blank-profile.png" alt="">
+      </div>
+      <span class="user-name"> Name Surname</span>
+      <span class="user-title">MUS Administartor</span>
+      <hr>
+      <div class ="year">
+        <select  id="years">
+          <option >2020</option>
+          <option >2019</option>
+          <option >General</option>
+        </select>
+      </div>
+    </div>
+    <div class="graph">
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+<!-- Drawing the Visitors LineChart -->
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+            ['Year', 'Visitors'],
+            ['20/02/2020',  841],
+            ['21/02/2020',  825],
+            ['22/02/2020',  838],
+            ['23/02/2020',  819],
+            ['24/02/2020',  824],
+            ['25/02/2020',  749],
+            ['26/02/2020',  750],
+            ['27/02/2020',  669],
+            ['28/02/2020',  651],
+            ['29/02/2020',  575],
+            ['01/03/2020',  578],
+            ['02/03/2020',  523],
+            ['03/03/2020',  534],
+            ['04/03/2020',  531],
+            ['05/03/2020',  519],
+            ['06/03/2020',  431],
+            ['07/03/2020',  419],
+            ['08/03/2020',  469],
+            ['09/03/2020',  714],
+            ['10/03/2020',  560],
+            ['11/03/2020',  689],
+            ['12/03/2020',  770],
+            ['13/03/2020',  703],
+            ['14/03/2020',  574],
+            ['15/03/2020',  561]
+          ]);
+
+          var options = {
+            title: 'Number of Visitors',
+            curveType: 'function',
+            legend: { position: 'bottom' }
+          };
+
+          var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+          chart.draw(data, options);
+        }
+
+<!-- Drawing Flights chart (change to gauge)-->
+
+        google.charts.load('current', {packages: ['corechart', 'bar']});
+        google.charts.setOnLoadCallback(drawMultSeries);
+
+        function drawMultSeries() {
+              var data = google.visualization.arrayToDataTable([
+                ['Halfs', '2020 Fights', '2019 Flights'],
+                ['First', 1000, 8650],
+                ['Second', 0, 0]
+              ]);
+
+              var options = {
+                title: 'Number of flights to the UK',
+                chartArea: {width: '50%'},
+                hAxis: {
+                  title: 'Number of Flights',
+                  minValue: 0
+                },
+                vAxis: {
+                  title: 'Halfs'
+                }
+              };
+
+              var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+              chart.draw(data, options);
+            }
+
+
+
+      </script>
+      <body>
+        <div id="curve_chart" style="width: 980px; height: 350px"></div>
+      </body>
+    </div>
+    </div>
+<div class="cards">
+
+<!-- <div id="chart_div" style="width: 480px; height: 350px"></div> -->
+<div calss="gauge">
+  <p>MUS mentions</p>
+  <div class="gauge__body">
+
+      <div class="gauge__cover">
+        <div class="seperation">
+        <div id="negative">8</div>
+        <div id="positive">40</div>
+        <button type="button" onclick="changeToPress()">Press</button>
+        <button type="button" onclick="changeToMedia()">Social Media</button>
+        </div>
+      </div>
+      <div id="gauge__fill">
+        <!-- <img src="images/arrow.png" alt=""> -->
+      </div>
+    </div>
+
+</div>
+<script>
+
+  var gaugeElement=document.querySelector("gauge");
+  function setGaugeValue(gauge,value){
+
+    if(value<0 || value>1){
+      return;
+    }
+    gauge.querySelector("gauge__fill").style.transform=`rotate(${value/2}turn)`;
+  }
+
+  setGaugeValue(gaugeElement,0.1);
+
+
+</script>
+<div id="chart" style="width: 480px; height: 350px"></div>
+<div id="chart-1" style="width: 480px; height: 350px"></div>
+
+    </div>
+
+    <div class="card-3">
+      <div class="chart-1">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+          google.charts.load('current', {packages: ['corechart', 'bar']});
+          google.charts.setOnLoadCallback(drawMultSeries);
+
+
+          function drawMultSeries() {
+                var data = google.visualization.arrayToDataTable([
+                  ['Halfs', '2020 Fights', '2019 Flights'],
+                  ['Second', 0, 0],
+                  ['First',  1000, 8650]
+                ]);
+
+                var options = {
+                  title: 'Number of flights to the UK',
+                  chartArea: {width: '50%'},
+                  hAxis: {
+                    title: 'Number of Flights',
+                    minValue: 0
+                  },
+                  vAxis: {
+                    title: 'Halfs'
+                  }
+                };
+
+                var chart = new google.visualization.BarChart(document.getElementById('chart-1'));
+                chart.draw(data, options);
+              }
+
+
+        </script>
+
+        <div class="card-3">
+          <div class="chart">
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+              google.charts.load('current', {packages: ['corechart', 'bar']});
+              google.charts.setOnLoadCallback(drawMultSeries);
+
+              function drawMultSeries() {
+                var data = google.visualization.arrayToDataTable([
+           ['Time', 'Bookings', { role: 'style' }],
+           ['First Half 2019', 210, '#3366CC'],            // RGB value
+           ['Second Half 2019', 0, 'red'],            // English color name
+           ['First Half 2020', 42, '#3366CC'],
+
+         ['Second Half 2020', 0, 'red' ], // CSS-style declaration
+        ]);
+
+                var options = {
+                  title: 'Number of group-bookings  ',
+                  hAxis: {
+                    title: 'Year',
+
+                    viewWindow: {
+                      min: ["firsthalf"],
+                      max: [17, 30, 0]
+                    }
+                  },
+                  vAxis: {
+                    title: 'Bookings'
+                  }
+                };
+
+                var chart = new google.visualization.ColumnChart(
+                  document.getElementById('chart'));
+
+                chart.draw(data, options);
+              }
+
+
+            </script>
+      </div>
+    </div>
+
+
+
+</section>
+
+</body>
+</html>
